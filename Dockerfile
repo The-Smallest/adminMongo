@@ -1,9 +1,8 @@
-FROM node:latest
+FROM node:slim
+MAINTAINER Ivan Samoylenko (mutsmu@gmail.com)
 
-COPY . /app/user
-
-WORKDIR /app/user
-
-RUN npm install
-
-CMD node app.js
+COPY . /app
+WORKDIR /app
+RUN cd /app && npm install --production && npm dedupe && npm prune --production
+EXPOSE 1234
+CMD ["node", "start" ]
