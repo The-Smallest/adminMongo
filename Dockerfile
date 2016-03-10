@@ -5,4 +5,4 @@ COPY . /app
 WORKDIR /app
 RUN cd /app && npm install --production && npm dedupe && npm prune --production
 EXPOSE 1234
-CMD ["node", "start" ]
+CMD ["node", "app.js" ]
